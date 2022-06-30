@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('orders', 'App\Http\Controllers\OrderController');
+Route::resource('products', 'App\Http\Controllers\ProductController');
+Route::resource('users', 'App\Http\Controllers\UserController');
+Route::resource('stocks', 'App\Http\Controllers\StockController');
+Route::resource('stores', 'App\Http\Controllers\StoreController');
