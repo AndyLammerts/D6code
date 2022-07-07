@@ -23,6 +23,7 @@ Route::resource('users', 'App\Http\Controllers\UserController');
 Route::resource('stocks', 'App\Http\Controllers\StockController');
 Route::resource('stores', 'App\Http\Controllers\StoreController');
 Route::resource('address', 'App\Http\Controllers\AddressController');
+Route::resource('privilege', 'App\Http\Controllers\PrivilegeController');
 
 
 Auth::routes();
