@@ -72,14 +72,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        $user = config('roles.models.defaultUser')::create([
             'username' => $data['username'],
             'first_name' =>$data['first_name'],
             'last_name' =>$data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'phone_number'=>$data['phone_number'],
-            'role' => 'USER'
         ]);
          Address::create([
             'user_id' => $user->id,
@@ -88,6 +87,8 @@ class RegisterController extends Controller
             'house_number' =>$data['house_number'],
             'city' =>$data['city'],
         ]);
+        $role = config('roles.models.role')::where('name', '=', 'User')->first();  //choose the default role upon user creation.
+        $user->attachRole($role);
         return $user;
     }
 }

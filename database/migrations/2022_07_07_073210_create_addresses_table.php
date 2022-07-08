@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddressMigration extends Migration
+class CreateAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,11 +16,12 @@ class AddressMigration extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->timestamps();
             $table->string('street');
             $table->string('house_number');
             $table->string('postal_code');
             $table->string('city');
+            $table->timestamps();
+
         });
     }
 
@@ -33,7 +34,8 @@ class AddressMigration extends Migration
         Schema::table('addresses', function (Blueprint $table) {
         $table->dropForeign(['user_id']);
       });
-      Schema::dropIfExists('address');
+      Schema::dropIfExists('addresses');
 
     }
 }
+

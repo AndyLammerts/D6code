@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 Use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class PrivilegeController extends Controller
 {
     protected $user;
@@ -14,9 +15,11 @@ class PrivilegeController extends Controller
         return view('privilege.index', compact('users'));
     }
 
-    public function edit(User $user){
-        return view('privilege.edit', compact('user'));
-    }
+    public function addAdmin(User $user){
+        $user = config('roles.models.defaultUser')::find($user->id);
+        $user->attachRole($adminRole);
+        return redirect('/privilege');
+        }
 
     public function change(User $user){
     }

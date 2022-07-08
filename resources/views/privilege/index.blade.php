@@ -1,3 +1,4 @@
+@role('user')
 @extends('layouts.app')
 
 @section('content')
@@ -24,9 +25,7 @@
                                 <a>{{$user->role}}</a>
                             </td>
                             <td>
-                                {{-- <form action="{{ route('privilege.change', $user->id) }}"
-                                    method="post">
-                                    <button class="btn btn-danger" type="submit">Maak Admin</button> --}}
+                                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#ModalEdit"> {{__('Verander')}}
                             </td>
                         </tr>
                     @endforeach
@@ -35,4 +34,6 @@
         </div>
     </div>
 </div>
+@include('privilege.edit')
 @endsection
+@endrole
